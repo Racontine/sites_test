@@ -10,48 +10,54 @@ export function Services() {
   ];
 
   return (
-    <section id="services" className="py-24 lg:py-32 bg-[#fafaf7]">
+    <section id="services" className="py-24 lg:py-32 transition-colors duration-300">
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
-        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-16">
+        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-20">
           <div className="max-w-2xl">
-            <div className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-orange-600">
-              <span className="h-px w-8 bg-orange-600" />
+            <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.2em] text-orange-600 dark:text-orange-400">
+              <span className="h-px w-8 bg-orange-600 dark:bg-orange-400" />
               {t("services.kicker")}
             </div>
-            <h2 className="mt-4 text-4xl lg:text-5xl font-semibold tracking-tight leading-tight">
+            <h2 className="mt-6 text-5xl lg:text-6xl font-display font-bold tracking-tight leading-tight dark:text-white">
               {t("services.title.1")}
               <br />
-              <span className="italic font-serif font-light">{t("services.title.2")}</span>
+              <span className="text-neutral-400 font-light italic">{t("services.title.2")}</span>
             </h2>
           </div>
-          <p className="lg:max-w-md text-neutral-600 leading-relaxed">
+          <p className="lg:max-w-md text-lg text-neutral-600 dark:text-neutral-400 leading-relaxed font-medium">
             {t("services.desc")}
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-4">
+        <div className="grid md:grid-cols-2 gap-6 lg:gap-8">
           {services.map((s) => (
             <article
               key={s.n}
-              className="group relative rounded-3xl border border-neutral-200 bg-white p-8 lg:p-10 hover:border-neutral-900 transition-all hover:-translate-y-1 duration-300"
+              className="group relative rounded-[2.5rem] border border-neutral-200 dark:border-white/10 bg-white dark:bg-white/5 p-10 lg:p-12 hover:border-orange-500/50 transition-all hover:-translate-y-2 duration-500 overflow-hidden"
             >
-              <div className="flex items-start justify-between">
-                <span className="text-xs font-mono text-neutral-400 tracking-widest">{s.n}</span>
-                <span className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-neutral-100 group-hover:bg-orange-500 group-hover:text-white transition-colors">
-                  →
-                </span>
-              </div>
-              <h3 className="mt-6 text-2xl font-semibold tracking-tight">{s.title}</h3>
-              <p className="mt-3 text-neutral-600 leading-relaxed">{s.desc}</p>
-              <div className="mt-6 flex flex-wrap gap-2">
-                {s.tags.map((tg) => (
-                  <span
-                    key={tg}
-                    className="text-[11px] uppercase tracking-wider rounded-full border border-neutral-200 px-2.5 py-1 text-neutral-600"
-                  >
-                    {tg}
+              <div className="absolute inset-0 bg-gradient-to-br from-orange-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+              
+              <div className="relative z-10">
+                <div className="flex items-start justify-between">
+                  <span className="text-lg font-display font-bold text-orange-500/30 group-hover:text-orange-500 transition-colors">{s.n}</span>
+                  <span className="inline-flex h-12 w-12 items-center justify-center rounded-full bg-neutral-100 dark:bg-white/10 group-hover:bg-orange-500 group-hover:text-white transition-all duration-300 group-hover:rotate-45">
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" />
+                    </svg>
                   </span>
-                ))}
+                </div>
+                <h3 className="mt-8 text-3xl font-display font-bold tracking-tight dark:text-white">{s.title}</h3>
+                <p className="mt-4 text-neutral-600 dark:text-neutral-400 leading-relaxed text-lg">{s.desc}</p>
+                <div className="mt-8 flex flex-wrap gap-2">
+                  {s.tags.map((tg) => (
+                    <span
+                      key={tg}
+                      className="text-[10px] font-bold uppercase tracking-widest rounded-full bg-neutral-100 dark:bg-white/5 px-4 py-2 text-neutral-500 dark:text-neutral-400 group-hover:bg-orange-500/10 group-hover:text-orange-600 dark:group-hover:text-orange-400 transition-colors"
+                    >
+                      {tg}
+                    </span>
+                  ))}
+                </div>
               </div>
             </article>
           ))}

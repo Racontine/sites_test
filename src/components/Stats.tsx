@@ -10,20 +10,31 @@ export function Stats() {
   ];
 
   return (
-    <section className="bg-neutral-900 text-white py-20 lg:py-28">
+    <section className="relative py-24 lg:py-32 overflow-hidden">
+      <div className="absolute inset-0 bg-neutral-900 -z-10" />
+      <div className="absolute top-0 left-1/4 w-px h-full bg-gradient-to-b from-transparent via-white/10 to-transparent" />
+      <div className="absolute top-0 right-1/4 w-px h-full bg-gradient-to-b from-transparent via-white/10 to-transparent" />
+      
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-px bg-neutral-800 border border-neutral-800 rounded-3xl overflow-hidden">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
           {stats.map((s, i) => (
             <div
               key={i}
-              className="bg-neutral-900 p-8 lg:p-10 group hover:bg-neutral-800 transition-colors"
+              className="relative p-8 lg:p-10 rounded-3xl border border-white/10 glass hover:bg-white/5 transition-all group overflow-hidden"
             >
-              <div className="text-5xl lg:text-6xl font-semibold tracking-tight bg-gradient-to-br from-white to-neutral-400 bg-clip-text text-transparent">
-                {s.k}
+              <div className="absolute -right-4 -top-4 text-9xl font-display font-black text-white/5 select-none transition-transform group-hover:scale-110">
+                {i + 1}
               </div>
-              <div className="mt-4 text-sm font-medium text-white">{s.v}</div>
-              <div className="mt-1 text-xs text-neutral-500">{s.s}</div>
-              <div className="mt-6 h-px w-8 bg-orange-500 group-hover:w-16 transition-all" />
+              <div className="relative">
+                <div className="text-6xl lg:text-7xl font-display font-bold tracking-tight text-white">
+                  {s.k}
+                </div>
+                <div className="mt-4 text-sm font-bold text-orange-500 uppercase tracking-widest">{s.v}</div>
+                <div className="mt-1 text-xs text-neutral-400 font-medium">{s.s}</div>
+                <div className="mt-8 h-1 w-12 bg-white/20 rounded-full overflow-hidden">
+                  <div className="h-full bg-orange-500 w-0 group-hover:w-full transition-all duration-700 ease-out" />
+                </div>
+              </div>
             </div>
           ))}
         </div>
